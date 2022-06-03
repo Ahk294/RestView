@@ -1,0 +1,83 @@
+/* Static stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+body {
+  background-color: #EEEEEE !important;
+  color: #393E46;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #393E46 !important;
+}
+
+nav a {
+  color: #EEEEEE !important;
+}
+
+.pages:hover {
+  color: #AAD8D3 !important;
+  cursor: pointer;
+}
+
+.reg-card-header {
+  background-color: #AAD8D3 !important;
+  color: #393E46 !important;
+}
+
+.reg-card-body {
+  background-color: #393E46 !important;
+  color: #EEEEEE !important;
+}
+
+.reg-card-footer {
+  background-color: #AAD8D3 !important;
+  color: #393E46 !important;
+  font-weight: bold !important;
+}
+
+.btn{
+  background-color: #393E46 !important;
+  border-color: #00ADB5 !important;
+  color: #EEEEEE !important;
+  font-weight: bold !important;
+}
+
+.btn:hover{
+  background-color: #00ADB5 !important;
+}
+
+.close {
+  background-color: white !important;
+  color: black !important;
+}
+
+.close:hover {
+  background-color: white !important;
+}
+
+.card:hover{
+  background-color: #AAD8D3 !important;
+  transition: 0.3s;
+}
+
+input {
+  border-color: #393E46 !important;
+}
+
+textarea {
+  border-color: #393E46 !important;
+}
+
+select {
+  border-color: #393E46 !important;
+}
+
+.footer{
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  padding-top: 10px;
+}

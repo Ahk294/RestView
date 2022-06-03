@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap & CSS -->
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <title id="title">Home</title>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg" id="nav-bar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">RestView</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link pages active" aria-current="page" href="/"
+              >Home</a
+            >
+            <a class="nav-link pages" href="/addrestaurant">Add Restaurant</a>
+            <a class="nav-link pages" href="/myprofile">My Profile</a>
+            <a class="nav-link pages" href="/signout">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- home page div -->
+    <div id="home" style="display: block">
+      <!-- Top Section Start -->
+      <section class="my-5">
+        <div class="container">
+          <div class="row">
+            <!-- Start Header  -->
+            <div class="col-md-6">
+              <p class="display-1">RestView</p>
+              <h5 class="ml-2">
+                The only place you need to satisfy your cravings!
+              </h5>
+            </div>
+            <!-- End Header  -->
+
+            <div class="col-md-6">
+              <div class="row justify-content-end">
+                <!-- Start Search -->
+                <div class="col offset-2">
+                  <div class="d-flex justify-content-end mt-5">
+                    <input
+                      type="search"
+                      id="searchTxt"
+                      class="form-control"
+                      placeholder="🔍 Realtime Search"
+                    />
+                  </div>
+                </div>
+                <!-- End Search  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Top Section End -->
+
+      <!-- Start Restaurants Section  -->
+      <div class="restaurant-list">
+        <div class="container">
+          <div
+            class="row text-center d-flex justify-content-between my-5"
+            id="post"
+          ></div>
+        </div>
+      </div>
+      <!-- End Restaurants Section  -->
+    </div>
+
+    <!-- login div -->
+    <div id="login" style="display: none">
+      <div id="loginToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="login-heading"></strong>
+              <small class="text-muted">Just Now</small>
+            </div>
+            <div class="toast-body" id="login-msg"></div>
+          </div>
+        </div>
+      </div>
+      <section class="my-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="card mt-5">
+                <header class="card-header reg-card-header">
+                  <h4 class="card-title mt-3">Sign In</h4>
+                </header>
+                <div class="card-body reg-card-body">
+                  <form>
+                    <div class="col form-group mt-2">
+                      <label>Email Address</label>
+                      <input
+                        id="login-email"
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter Email"
+                      />
+                    </div>
+                    <div class="col form-group mt-2">
+                      <label>Password</label>
+                      <input
+                        id="login-password"
+                        class="form-control"
+                        type="password"
+                        placeholder="Enter Password"
+                      />
+                    </div>
+                  </form>
+                  <div
+                    class="col form-group mt-4 d-flex justify-content-center"
+                  >
+                    <button
+                      class="btn btn-primary rounded btn-block"
+                      onclick="login()"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </div>
+                <div class="border-top card-body text-center reg-card-footer">
+                  Don't Have an Account? <a onclick="loadRegister()">Sign Up</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- register div -->
+    <div id="register" style="display: none">
+      <div id="registerToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="reg-heading"></strong>
+              <small class="text-muted">Just Now</small>
+            </div>
+            <div class="toast-body" id="reg-msg"></div>
+          </div>
+        </div>
+      </div>
+      <section class="my-3">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="card reg-card">
+                <header class="card-header reg-card-header">
+                  <h4 class="card-title mt-3">Sign Up</h4>
+                </header>
+                <div class="card-body reg-card-body">
+                  <form method="post">
+                    <div class="form-row">
+                      <div class="col form-group">
+                        <label>Name </label>
+                        <input
+                          name="name"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Full Name"
+                          id="reg-name"
+                        />
+                      </div>
+                      <div class="col form-group">
+                        <label>Email Address</label>
+                        <input
+                          name="email"
+                          type="email"
+                          class="form-control"
+                          placeholder="Enter Email"
+                          id="reg-email"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Phone Number</label>
+                      <input
+                        name="phone"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Phone Number"
+                        id="reg-phone"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Create password</label>
+                      <input
+                        class="form-control"
+                        name="password"
+                        type="password"
+                        placeholder="Enter Password"
+                        id="reg-password"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Confirm password</label>
+                      <input
+                        class="form-control"
+                        name="cpassword"
+                        type="password"
+                        placeholder="Confirm Password"
+                        id="cPass"
+                      />
+                    </div>
+                    <div class="form-group mt-3 d-flex justify-content-center">
+                      <button
+                        class="btn btn-primary rounded btn-block"
+                        onclick="register(event)"
+                      >
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="border-top card-body text-center d-flex justify-content-center reg-card-footer"
+                >
+                  <a onclick="loadLogin()">Sign In Instead?</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- individual restaurant div -->
+    <div id="restaurant" class="container my-5" style="display: none">
+      <div id="restToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="rest-heading"></strong>
+              <small class="text-muted">Just Now</small>
+            </div>
+            <div class="toast-body" id="rest-msg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <!-- Start Left Items -->
+        <div class="col-md-6 col-sm-12" id="restInfo"></div>
+        <!-- End Left Items -->
+
+        <!-- Start Right Items -->
+        <div class="col-md-6 d-flex flex-column" id="comments"></div>
+        <!-- End Right Items -->
+      </div>
+    </div>
+
+    <!-- add restaurant div -->
+    <div id="addRestaurant" class="container" style="display: none">
+      <div id="addRestToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="add-rest-heading"></strong>
+              <small class="text-muted">Just Now</small>
+              <button
+                type="button"
+                class="ml-2 mb-1 close"
+                data-dismiss="toast"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="toast-body" id="add-rest-msg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center my-5">
+        <div class="col-md-12">
+          <h1>Add Restaurant</h1>
+        </div>
+      </div>
+
+      <div>
+        <div class="row d-flex justify-content-center">
+          <!-- Left Side -->
+          <div class="col-6">
+            <label class="h3 mt-2">Restaurant Name</label>
+            <input
+              name="restaurant_name"
+              type="text"
+              class="form-control"
+              placeholder="Restaurant Name"
+              id="rest-name"
+              required
+            />
+            <label class="h3 mt-2">Rating</label>
+            <select
+              name="rating"
+              id="dropdown"
+              class="form-select w-100"
+              required
+            >
+              <option value="">-Select-</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label class="h3 mt-2">Upload Restaurant Image</label>
+            <input
+              type="file"
+              name="imageToUpload"
+              class="form-control"
+              id="image"
+              required
+            />
+          </div>
+
+          <!-- Right Side -->
+          <div class="col-6">
+            <label class="h3 mt-2">Review</label>
+            <textarea
+              name="review"
+              class="form-control resize-none textarea-height"
+              style="height: 125px"
+              placeholder="Review"
+              id="review"
+              required
+            ></textarea>
+            <label class="h3 mt-2">Location</label>
+            <input
+              name="location"
+              type="text"
+              class="form-control"
+              placeholder="Location"
+              id="location"
+              required
+            />
+          </div>
+          <div class="col-md-2 mt-5">
+            <button
+              name="addrestaurant"
+              type="submit"
+              class="btn btn-primary rounded btn-block p-3"
+              onclick="addReview()"
+            >
+              Add Review
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- update restaurant div -->
+    <div id="updateRestaurant" class="container" style="display: none">
+      <div id="updateRestToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="update-rest-heading"></strong>
+              <small class="text-muted">Just Now</small>
+              <button
+                type="button"
+                class="ml-2 mb-1 close"
+                data-dismiss="toast"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="toast-body" id="update-rest-msg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center my-5">
+        <div class="col-md-12">
+          <h1>Update Restaurant</h1>
+        </div>
+      </div>
+
+      <div>
+        <div
+          class="row d-flex justify-content-center"
+          id="updateRestaurantInfo"
+        ></div>
+      </div>
+    </div>
+
+    <!-- my profile div -->
+    <div id="myProfile" style="display: none">
+      <div id="updateUserToast" style="display: none">
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <div class="toast" data-autohide="false">
+            <div class="toast-header">
+              <strong class="mr-auto" id="update-Heading"></strong>
+              <small class="text-muted">Just Now</small>
+            </div>
+            <div class="toast-body" id="update-Msg"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start Account Informatiom -->
+      <div class="my-5">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <p class="display-5">My Profile</p>
+            </div>
+          </div>
+          <div class="row mt-6">
+            <div class="d-flex justify-content-center">
+              <div class="col-md-5" id="server_response">
+                <div id="myProfileInfo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Account Information -->
+
+      <hr />
+
+      <!-- Start Review History -->
+      <div class="my-5">
+        <div class="container">
+          <div class="row my-3 text-center">
+            <div class="col-sm-12">
+              <p class="display-5">Review History</p>
+            </div>
+          </div>
+
+          <!-- Start Table -->
+          <div class="row">
+            <div class="col-sm-12">
+              <table
+                id="cartTable"
+                class="table table-responsive table-striped table-bordered"
+              >
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Restaurant</th>
+                    <th scope="col">Added On</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center" id="postHistory"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- End Table -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgb(249, 248, 252)">
+        <span>RestView - Abdul Haseeb Khan</span>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="client.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Dynamic Search
+      $("#searchTxt").on("keyup", function () {
+        // Make sure everything is converted to lowercase
+        var value = $(this).val().toLowerCase();
+        $("#post div").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+      });
+    </script>
+  </body>
+</html>
